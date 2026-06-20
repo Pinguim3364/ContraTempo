@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="amoled">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>waste time simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="ui-layer">
+        <div id="top-left">
+            <button id="menu-btn" class="micro-anim">☰</button>
+        </div>
+        
+        <div id="top-center">
+            <div>pontos: <span id="pontos-display">0.0</span></div>
+            <div id="gps-container">ganho por segundo: <span id="gps-display">0.1</span></div>
+        </div>
+        
+        <div id="top-right">
+            <select id="theme-selector" class="micro-anim">
+                <option value="amoled">preto amoled</option>
+                <option value="dark">preto normal</option>
+                <option value="light">branco confortável</option>
+            </select>
+        </div>
+
+        <div id="bottom-right">
+            <button id="settings-btn" class="micro-anim">⚙️</button>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <h3>upgrades</h3>
+        <button id="buy-upgrade-btn" class="micro-anim">
+            nível: <span id="upg-level">0</span><br>
+            custo: <span id="upg-cost">10.0</span><br>
+            +0.1/s
+        </button>
+    </div>
+
+    <div id="center-content">
+        <h1>bem-vindo ao waste time simulator!</h1>
+        <p class="timer-text">próximo upgrade em: <span id="countdown">--:--</span></p>
+        
+        <div id="investimentos-area" style="display: none;">
+            <h3>área de investimento passivo</h3>
+            <p>seus pontos agora oscilam no mercado do tempo.</p>
+            <button id="invest-btn" class="micro-anim">alocar 100 pontos</button>
+            <p>rendimento: <span id="rendimento-display">0</span></p>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <h2>configurações do sistema</h2>
+            <label><input type="checkbox" id="toggle-sound"> som (on/off)</label><br>
+            <label><input type="checkbox" id="toggle-sfx"> sfx (on/off)</label><br>
+            <label><input type="checkbox" id="toggle-rtx"> gráficos ultra realistas</label><br>
+            
+            <div class="settings-section">
+                <h3>seu token (conta)</h3>
+                <input type="text" id="token-display" readonly>
+                <button id="copy-token-btn" class="micro-anim">copiar token</button>
+            </div>
+            
+            <div class="settings-section">
+                <h3>logs do sistema</h3>
+                <div id="sys-logs"></div>
+            </div>
+            
+            <button id="close-settings" class="invert-btn micro-anim">fechar</button>
+        </div>
+    </div>
+
+    <div id="offline-modal" class="modal">
+        <div class="modal-content">
+            <p id="offline-text">enquanto você esteve 0h 0m 0s fora, você ganhou 0 pontos.</p>
+            <button id="close-offline" class="invert-btn micro-anim">fechar</button>
+        </div>
+    </div>
+
+    <div id="save-icon">☁️↓</div>
+
+    <script src="game.js"></script>
+</body>
+</html>
