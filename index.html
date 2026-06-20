@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="amoled">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contratempo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="ui-layer">
+        <div id="top-left">
+            <button id="menu-btn" class="micro-anim">☰</button>
+        </div>
+        
+        <div id="top-center">
+            <div class="stat-main"><span id="pontos-display">0.0</span></div>
+            <div class="stat-sub"><span id="gps-display">0.1</span>/s</div>
+        </div>
+        
+        <div id="top-right">
+            <select id="theme-selector" class="micro-anim">
+                <option value="amoled">amoled</option>
+                <option value="dark">normal</option>
+                <option value="light">claro</option>
+            </select>
+        </div>
+
+        <div id="bottom-right">
+            <button id="settings-btn" class="micro-anim">⚙️</button>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <h3 class="side-title">upgrades</h3>
+        <button id="buy-upgrade-btn" class="micro-anim">
+            nível <span id="upg-level">0</span><br>
+            custo <span id="upg-cost">10.0</span>
+        </button>
+    </div>
+
+    <div id="center-content">
+        <h1>contratempo</h1>
+        <p class="timer-text" id="countdown">--:--</p>
+        <div id="investimentos-area" style="display: none;">
+            <button id="invest-btn" class="micro-anim">investir tempo</button>
+        </div>
+    </div>
+
+    <div id="offline-modal" class="modal">
+        <div class="modal-content">
+            <p id="offline-text"></p>
+            <button id="close-offline" class="invert-btn micro-anim">entendido</button>
+        </div>
+    </div>
+
+    <div id="save-icon">☁️</div>
+
+    <script src="game.js"></script>
+</body>
+</html>
