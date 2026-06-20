@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contratempo - Um jogo idle com múltiplos caminhos de upgrade">
+    <title>contratempo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header com estatísticas -->
+    <header class="header">
+        <div class="header-left">
+            <button id="menu-btn" class="btn-icon" aria-label="Abrir menu">☰</button>
+        </div>
+        
+        <div class="header-center">
+            <div class="stat-display">
+                <div class="stat-main">
+                    <span id="pontos-display">0.0</span>
+                    <span class="stat-label">pontos</span>
+                </div>
+                <div class="stat-sub">
+                    <span id="gps-display">0.1</span><span class="stat-label">/s</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <select id="theme-selector" class="select-theme" aria-label="Selecionar tema">
+                <option value="dark">Escuro</option>
+                <option value="light">Claro</option>
+                <option value="amoled">AMOLED</option>
+            </select>
+            <button id="settings-btn" class="btn-icon" aria-label="Configurações">⚙️</button>
+        </div>
+    </header>
+
+    <!-- Menu lateral -->
+    <nav id="sidebar" class="sidebar">
+        <h2 class="sidebar-title">Menu</h2>
+        <ul class="sidebar-menu">
+            <li><a href="#" data-action="scroll-upgrades">Upgrades</a></li>
+            <li><a href="#" data-action="scroll-stats">Estatísticas</a></li>
+            <li><a href="#" data-action="reset-game">Resetar Jogo</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <div class="hero">
+            <h1 class="title">contratempo</h1>
+            <div class="timer-display">
+                <p id="countdown" class="countdown">--:--</p>
+                <p class="countdown-label">próximo upgrade</p>
+            </div>
+        </div>
+
+        <!-- Container de upgrades -->
+        <section id="upgrades-section" class="upgrades-section">
+            <h2 class="section-title">Caminhos de Upgrade</h2>
+            
+            <!-- Branch 1 -->
+            <div class="branch-container">
+                <div class="branch-header">
+                    <h3 class="branch-title">Branch 1</h3>
+                    <div class="branch-progress">
+                        <div class="progress-bar">
+                            <div id="branch1-progress" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="branch1-level" class="progress-text">Nível 0/10</span>
+                    </div>
+                </div>
+                <div class="upgrades-grid">
+                    <button id="upgrade-1-0" class="upgrade-card upgrade-locked" data-branch="1" data-level="0" aria-label="Upgrade 1.0">
+                        <div class="upgrade-header">
+                            <span class="upgrade-num">1.0</span>
+                            <span class="upgrade-status">🔒</span>
+                        </div>
+                        <div class="upgrade-info">
+                            <p class="upgrade-name">Boost Inicial</p>
+                            <p class="upgrade-cost">Custo: <span class="cost-value">10.0</span></p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Branch 2 -->
+            <div class="branch-container">
+                <div class="branch-header">
+                    <h3 class="branch-title">Branch 2</h3>
+                    <div class="branch-progress">
+                        <div class="progress-bar">
+                            <div id="branch2-progress" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="branch2-level" class="progress-text">Nível 0/10</span>
+                    </div>
+                </div>
+                <div class="upgrades-grid">
+                    <button id="upgrade-2-0" class="upgrade-card upgrade-locked" data-branch="2" data-level="0" aria-label="Upgrade 2.0" disabled>
+                        <div class="upgrade-header">
+                            <span class="upgrade-num">2.0</span>
+                            <span class="upgrade-status">🔒</span>
+                        </div>
+                        <div class="upgrade-info">
+                            <p class="upgrade-name">Desbloqueado ao 5º upgrade no Branch 1</p>
+                            <p class="upgrade-cost">Custo: <span class="cost-value">--</span></p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Branch 3 -->
+            <div class="branch-container">
+                <div class="branch-header">
+                    <h3 class="branch-title">Branch 3</h3>
+                    <div class="branch-progress">
+                        <div class="progress-bar">
+                            <div id="branch3-progress" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="branch3-level" class="progress-text">Nível 0/10</span>
+                    </div>
+                </div>
+                <div class="upgrades-grid">
+                    <button id="upgrade-3-0" class="upgrade-card upgrade-locked" data-branch="3" data-level="0" aria-label="Upgrade 3.0" disabled>
+                        <div class="upgrade-header">
+                            <span class="upgrade-num">3.0</span>
+                            <span class="upgrade-status">🔒</span>
+                        </div>
+                        <div class="upgrade-info">
+                            <p class="upgrade-name">Desbloqueado ao 10º upgrade no Branch 2</p>
+                            <p class="upgrade-cost">Custo: <span class="cost-value">--</span></p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estatísticas -->
+        <section id="stats-section" class="stats-section">
+            <h2 class="section-title">Estatísticas</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-card-label">Total de Upgrades</span>
+                    <span id="total-upgrades" class="stat-card-value">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card-label">Ganho Offline</span>
+                    <span id="offline-gain" class="stat-card-value">0.0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card-label">Taxa Atual</span>
+                    <span id="current-rate" class="stat-card-value">0.1/s</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de ganho offline -->
+    <div id="offline-modal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Você estava fora!</h2>
+            <p id="offline-text" class="modal-text"></p>
+            <button id="close-offline" class="btn-primary">Entendido</button>
+        </div>
+    </div>
+
+    <!-- Ícone de salvamento -->
+    <div id="save-icon" class="save-indicator">💾</div>
+
+    <!-- Toast de notificação -->
+    <div id="toast" class="toast"></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
