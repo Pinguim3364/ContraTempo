@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CONTRATEMPO</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://omeganum.js.org/dist/omeganum.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- HEADER -->
+  <header id="header">
+    <div id="header-spacer"></div>
+    <button id="settings-btn" aria-label="Configurações">
+      <svg viewBox="0 0 24 24" width="28" height="28">
+        <path fill="currentColor" d="M19.14,12.94c0.04,-0.3,0.06,-0.61,0.06,-0.94c0,-0.32,-0.02,-0.64,-0.07,-0.94l2.03,-1.58c0.18,-0.14,0.23,-0.41,0.12,-0.61 l-1.92,-3.32c-0.12,-0.22,-0.37,-0.29,-0.59,-0.22l-2.39,0.96c-0.5,-0.38,-1.03,-0.7,-1.62,-0.94L14.4,2.81 c-0.04,-0.24,-0.24,-0.41,-0.48,-0.41h-3.84c-0.24,0,-0.43,0.17,-0.47,0.41L9.25,5.35c-0.59,0.24,-1.13,0.57,-1.62,0.94L5.24,5.33 c-0.22,-0.08,-0.47,0,-0.59,0.22L2.74,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12 s0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14,-0.23,0.41,-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39,-0.96 c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44,-0.17,0.47,-0.41l0.36,-2.54 c0.59,-0.24,1.13,-0.56,1.62,-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59,-0.22l1.92,-3.32c0.12,-0.22,0.07,-0.47,-0.12,-0.61 L19.14,12.94z M12,15.6c-1.98,0,-3.6,-1.62,-3.6,-3.6s1.62,-3.6,3.6,-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- CORPO PRINCIPAL -->
+  <div id="main-body">
+
+    <!-- PAINEL ESQUERDO: UPGRADES -->
+    <aside id="upgrades-panel">
+      <div id="upgrades-header">
+        <h2 id="upgrades-title">UPGRADES</h2>
+      </div>
+      <div id="upgrades-list">
+        <!-- upgrades gerados via JS -->
+      </div>
+    </aside>
+
+    <!-- ÁREA CENTRAL -->
+    <main id="game-area">
+      <div id="watermark">CONTRATEMPO</div>
+
+      <div id="stats-top">
+        <div class="stat-block">
+          <span class="stat-label" id="points-label">PONTOS</span>
+          <span class="stat-value" id="points-display">0</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-label" id="pps-label">P/S</span>
+          <span class="stat-value" id="pps-display">0</span>
+        </div>
+      </div>
+
+      <div id="floaters"></div>
+
+      <!-- ÁREA DE AÇÃO (INFERIOR) -->
+      <div id="action-area">
+        <div id="pps-display-bottom" style="font-size: 24px; color: var(--accent); text-align: center;">P/S: 0</div>
+        <button id="rebirth-btn" style="display: none; background: white; color: #121212; margin-top: 10px; width: 100%; padding: 12px; border-radius: 14px; font-weight: bold; font-family: inherit; text-transform: uppercase; cursor: pointer;">REBIRTH</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- OVERLAY DE CONFIGURAÇÕES -->
+<div id="settings-overlay" class="overlay hidden">
+  <div class="modal">
+    <button class="modal-close" id="close-settings" aria-label="Fechar">✕</button>
+
+    <h1 class="modal-title" id="settings-title">CONFIGURAÇÕES</h1>
+
+    <button class="menu-item" id="btn-login">LOGIN</button>
+    <button class="menu-item" id="btn-stats">ESTATÍSTICAS</button>
+
+    <h2 class="section-title" id="section-som">SONS E GRÁFICOS</h2>
+    <button class="menu-item toggle-item" id="btn-modo-leve">
+      <span>MODO LEVE</span><span class="toggle-state" data-key="modoLeve">OFF</span>
+    </button>
+    <button class="menu-item toggle-item" id="btn-popups">
+      <span>POPUPS</span><span class="toggle-state" data-key="popups">ON</span>
+    </button>
+    <button class="menu-item" id="btn-trilha">TRILHA SONORA<span class="menu-item-sub">(IMPORTAR)</span></button>
+    <button class="menu-item toggle-item" id="btn-sfx">
+      <span>EFEITOS SONOROS</span><span class="toggle-state" data-key="sfx">ON</span>
+    </button>
+    <button class="menu-item toggle-item" id="btn-tremores">
+      <span>TREMORES</span><span class="toggle-state" data-key="tremores">ON</span>
+    </button>
+    <button class="menu-item toggle-item" id="btn-cutscenes">
+      <span>CUTSCENES</span><span class="toggle-state" data-key="cutscenes">ON</span>
+    </button>
+
+    <div class="lang-row">
+      <span class="lang-label" id="lang-label">IDIOMA</span>
+      <div class="lang-buttons">
+        <button class="lang-btn" id="lang-pt">PT</button>
+        <button class="lang-btn" id="lang-en">EN</button>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="section-misc">MISC</h2>
+    <button class="menu-item" id="btn-updates">ATUALIZAÇÕES</button>
+    <button class="menu-item" id="btn-import-export">IMPORTAR/EXPORTAR SAVE</button>
+    <button class="menu-item" id="btn-about">SOBRE O JOGO</button>
+    <button class="menu-item" id="btn-credits">CRÉDITOS</button>
+
+    <button class="menu-item discord-btn" id="btn-discord">
+      <svg viewBox="0 0 245 240" width="26" height="20">
+        <path fill="currentColor" d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zm38.4 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/>
+        <path fill="currentColor" d="M189.5 20h-134C42.9 20 32 30.9 32 44.5v134.9C32 193 42.9 204 55.5 204h113.4l-5.3-18.5 12.8 11.9 12.1 11.2L210 224V44.5C210 30.9 199.1 20 189.5 20zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
+      </svg>
+      <span>DISCORD</span>
+    </button>
+  </div>
+</div>
+
+<!-- OVERLAY "EM DESENVOLVIMENTO" (LOGIN / ESTATÍSTICAS) -->
+<div id="dev-overlay" class="overlay hidden">
+  <div class="modal modal-dev">
+    <button class="modal-close" id="close-dev">✕</button>
+    <h1 class="modal-title" id="dev-title">EM DESENVOLVIMENTO</h1>
+    <div id="dev-body">
+      <p class="dev-text">Em desenvolvimento</p>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
