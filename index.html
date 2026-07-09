@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CONTRATEMPO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- HEADER -->
+        <header id="header">
+            <div id="header-spacer"></div>
+            <button id="settings-btn" aria-label="Configurações">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <!-- MAIN BODY -->
+        <div id="main-body">
+            <!-- UPGRADES PANEL -->
+            <aside id="upgrades-panel">
+                <div id="upgrades-header"><h2 id="upgrades-title">UPGRADES</h2></div>
+                <div id="upgrades-list"></div>
+            </aside>
+
+            <!-- GAME AREA -->
+            <main id="game-area">
+                <div id="watermark">CONTRATEMPO</div>
+                
+                <div id="stats-top">
+                    <div class="stat-block">
+                        <span id="points-label" class="stat-label">PONTOS</span>
+                        <span id="points-display" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-block">
+                        <span id="pps-label" class="stat-label">P/S</span>
+                        <span id="pps-display" class="stat-value">0</span>
+                    </div>
+                </div>
+
+                <div id="floaters"></div>
+
+                <!-- ACTION AREA -->
+                <div id="action-area">
+                    <div id="pps-display-bottom">P/S: 0</div>
+                    <button id="rebirth-btn" class="menu-item rebirth-hidden">
+                        RENASCIMENTO
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="drop-toast" class="hidden"></div>
+
+    <!-- SETTINGS OVERLAY -->
+    <div id="settings-overlay" class="overlay hidden">
+        <div class="modal">
+            <button id="close-settings" class="modal-close">✕</button>
+            <h2 id="settings-title" class="modal-title">CONFIGURAÇÕES</h2>
+            
+            <div class="section-title" id="section-som">SONS E GRÁFICOS</div>
+            <button id="btn-modo-leve" class="menu-item toggle-item"><span>MODO LEVE</span><span class="toggle-state">OFF</span></button>
+            <button id="btn-popups" class="menu-item toggle-item"><span>POPUPS</span><span class="toggle-state">ON</span></button>
+            <button id="btn-sfx" class="menu-item toggle-item"><span>EFEITOS SONOROS</span><span class="toggle-state">ON</span></button>
+            <button id="btn-tremores" class="menu-item toggle-item"><span>TREMORES</span><span class="toggle-state">ON</span></button>
+            <button id="btn-cutscenes" class="menu-item toggle-item"><span>CUTSCENES</span><span class="toggle-state">ON</span></button>
+
+            <div class="lang-row">
+                <span id="lang-label" class="lang-label">IDIOMA</span>
+                <div class="lang-buttons">
+                    <button id="lang-pt" class="lang-btn lang-active">PT</button>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </div>
+            </div>
+
+            <div class="section-title" id="section-misc">MISC</div>
+            <button id="btn-stats" class="menu-item">ESTATÍSTICAS</button>
+            <button id="btn-updates" class="menu-item">ATUALIZAÇÕES</button>
+            <button id="btn-import-export" class="menu-item">IMPORTAR/EXPORTAR SAVE</button>
+            <button id="btn-about" class="menu-item">SOBRE O JOGO</button>
+            <button id="btn-credits" class="menu-item">CRÉDITOS</button>
+            <button id="btn-discord" class="menu-item discord-btn">DISCORD</button>
+        </div>
+    </div>
+
+    <!-- DEV / INFO OVERLAY -->
+    <div id="dev-overlay" class="overlay hidden">
+        <div class="modal modal-dev">
+            <button id="close-dev" class="modal-close">✕</button>
+            <h2 id="dev-title" class="modal-title">EM DESENVOLVIMENTO</h2>
+            <div id="dev-body"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="ExpantaNum.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
