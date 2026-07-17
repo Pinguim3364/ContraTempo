@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>t</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Linhas douradas decorativas de fundo, compartilhadas por todas as telas -->
+<svg class="bg-lines" viewBox="0 0 1414 2000" preserveAspectRatio="none" aria-hidden="true">
+  <path class="bg-line l1" d="M700 -20 L470 900 L330 2020" />
+  <path class="bg-line l2" d="M1100 -20 L900 700 L1250 2020" />
+  <path class="bg-line l3" d="M560 460 C 900 320, 1250 380, 1414 330" />
+  <path class="bg-line l4" d="M560 660 C 850 700, 1050 1050, 1230 2020" />
+</svg>
+
+<!-- ===================== TELA PRINCIPAL DO JOGO ===================== -->
+<div id="view-game" class="view view-active">
+
+  <header class="topbar">
+    <span class="topbar-left">t</span>
+    <button class="topbar-right" id="open-settings" type="button">
+      CONFIGURAÇÕES <span class="gear">⚙</span>
+    </button>
+  </header>
+
+  <main class="stage">
+
+    <div class="counter-zone" id="counter-zone">
+      <div class="counter-value" id="t-value">0</div>
+      <div class="counter-unit">t</div>
+      <div class="popup-layer" id="popup-layer" aria-hidden="true"></div>
+    </div>
+
+    <div class="ps-row"><span id="ps-value">0.1</span> t/s</div>
+
+    <button id="click-btn" class="click-btn" type="button" disabled aria-label="Gerar t">t</button>
+
+  </main>
+
+  <section class="upgrades" aria-label="Upgrades">
+    <div class="upgrades-title">UPGRADES</div>
+    <div class="upgrades-scroll" id="upgrades-list">
+      <!-- cards injetados via JS -->
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== TELA DE CONFIGURAÇÕES ===================== -->
+<div id="view-settings" class="view">
+
+  <header class="topbar">
+    <button class="topbar-left as-button" id="close-settings" type="button" aria-label="Voltar">t</button>
+    <span class="topbar-right settings-active">
+      CONFIGURAÇÕES <span class="gear">⚙</span>
+    </span>
+  </header>
+
+  <main class="settings-body">
+
+    <div class="settings-section">
+      <div class="section-title"><span class="rule"></span>PROGRESSO<span class="rule"></span></div>
+
+      <div class="settings-row">
+        <span class="settings-label">Rebirths</span>
+        <span class="settings-value" id="stat-rebirths">0</span>
+      </div>
+      <div class="settings-row">
+        <span class="settings-label">t/s atual</span>
+        <span class="settings-value" id="stat-ps">0.1</span>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="section-title"><span class="rule"></span>PREFERÊNCIAS<span class="rule"></span></div>
+
+      <div class="settings-row">
+        <span class="settings-label">Popups de clique</span>
+        <span class="toggle-onoff" id="toggle-popups" data-on="true">
+          <span class="on">ON</span>/<span class="off">OFF</span>
+        </span>
+      </div>
+
+      <div class="settings-row">
+        <span class="settings-label">Idioma</span>
+        <button class="lang-pill" id="lang-pill" type="button" aria-label="Alternar idioma">
+          <span class="lang-pill-opt" data-lang="pt">PT</span>
+          <span class="lang-pill-knob"></span>
+          <span class="lang-pill-opt" data-lang="en">EN</span>
+        </button>
+      </div>
+
+      <div class="settings-row">
+        <span class="settings-label">Modo:</span>
+        <button class="theme-pill" id="theme-pill-settings" type="button" aria-label="Alternar modo claro/escuro">
+          <span class="theme-pill-icon sun">☀</span>
+          <span class="theme-pill-knob"></span>
+          <span class="theme-pill-icon moon">☾</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="section-title"><span class="rule"></span>OUTROS<span class="rule"></span></div>
+
+      <button class="settings-line" id="reset-save" type="button">RESETAR PROGRESSO</button>
+      <a class="settings-line" href="https://dsc.gg/contratempo" target="_blank" rel="noopener">DISCORD</a>
+    </div>
+
+    <p class="settings-version">ContraTempo · projeto "t" · v1.0.0</p>
+
+  </main>
+
+</div>
+
+<!-- ===================== MODAL DE CONFIRMAÇÃO DE RESET ===================== -->
+<div id="confirm-overlay" class="confirm-overlay" aria-hidden="true">
+  <div class="confirm-box">
+    <p class="confirm-text">Isso vai apagar todo o seu progresso. Não tem volta.</p>
+    <div class="confirm-actions">
+      <button class="confirm-btn confirm-cancel" id="confirm-cancel" type="button">Cancelar</button>
+      <button class="confirm-btn confirm-danger" id="confirm-danger" type="button">Apagar</button>
+    </div>
+  </div>
+</div>
+
+<script src="expantanum.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
